@@ -4,7 +4,7 @@ import ExpressionFunctions as ef
 
 
 
-for file in os.listdir("/Users/LevineMa/Desktop/LAB/Results Expression Morph"):
+for file in os.listdir(ef.PATH):
     if file[0] != "." and file != "Tests":
         ef.resultsList.append(file)
         ef.parser(file)
@@ -27,7 +27,7 @@ ef.getPercentage(ef.analyses_anger_fear)
 ef.makeGraph("Group Analysis Anger Fear")
 ef.reset()
 
-ef.itemAnalysisMapMaker(ef.resultsList[0])
+"""ef.itemAnalysisMapMaker(ef.resultsList[0])
 for file in ef.resultsList:
     if file != ef.resultsList[0]:
         ef.itemAnalysisMapPopulator(file)
@@ -38,16 +38,16 @@ ef.groupItemAnalysisGraph()
 
 for file in ef.resultsList:
     ef.itemAnalysisMapMaker(file)
-    ef.individualItemAnalysisGraph(file)
+    ef.individualItemAnalysisGraph(file)"""
 
 for file in ef.resultsList:
-    read = open(file, 'r')
+    read = open(ef.PATH + file, 'r')
     # Gets the subject's ID number to name the graph
     for line in read:
         splitLine = line.split(",")
         try:
-            if splitLine[10][0] == "F":
-                subjectGlob = splitLine[10]
+            if splitLine[0] == "Chrome":
+                subject = splitLine[10]
         except IndexError:
-            subjectGlob = subjectGlob
-    ef.singleAnalysis(file, subjectGlob + " Analysis")   #Code that is running for the single analysis
+            subject = subject
+    ef.singleAnalysis(file, subject + " Analysis")   #Code that is running for the single analysis

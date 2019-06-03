@@ -3,6 +3,7 @@ import numpy as np
 import os
 
 
+PATH = "/Users/LevineMa/Desktop/LAB/Results Expression Morph/"
 resultsList = []
 
 x = []      #Stores the values for the x axis of the graph (Intervals)
@@ -413,7 +414,7 @@ def reset():
     yE.clear()
 
 def parser(filename):
-    file = open(os.fspath("/Users/LevineMa/Desktop/LAB/Results Expression Morph/" + filename), 'r')
+    file = open(os.fspath(PATH + filename), 'r')
     for line in file:
         splitLine = line.split(",")     #Split all the lines in the csv file at commas
         for line in splitLine:          #Loop through all the lines
@@ -425,7 +426,7 @@ def parser(filename):
                             tenTest = int(word[1])
                             value = int(word[2])    #Check if number is an integer
 
-                            #print(lineSplit[0] + "_" + lineSplit[1] + "(" + tenTest.__str__() + value.__str__() + ")" + " : " + splitLine[12])
+
                             if lineSplit[0] == "anger" and lineSplit[1] == "fear":
                                 if tenTest == 0 and value == 0:
                                     zero_anger_fear.append(splitLine[12])
@@ -579,7 +580,7 @@ def makeGraph(title):
     yE.clear()
 
 def itemAnalysisMapMaker(filename):                     #Initializes and then populates the item analysis dictionary
-    file = open(os.fspath("/Users/LevineMa/Desktop/LAB/Results Expression Morph/" + filename), 'r')
+    file = open(os.fspath(PATH + filename), 'r')
     for line in file:                                   #Loops through all the lines in the file and splits them at every comma
         splitCsv = line.split(",")
         try:
@@ -605,7 +606,7 @@ def itemAnalysisMapMaker(filename):                     #Initializes and then po
     itemAnalysisMapPopulator(filename)
 
 def itemAnalysisMapPopulator(filename):
-    file = open(os.fspath("/Users/LevineMa/Desktop/LAB/Results Expression Morph/" + filename), 'r')
+    file = open(os.fspath(PATH + filename), 'r')
     for line in file:
         importantInformation = []           #Stores all the information that is important for the dictionary
         splitCsv = line.split(",")
@@ -657,7 +658,7 @@ def individualItemAnalysisGraph(filename):     #Same code as groupItemAnalysisGr
     n_groups = 9
     continuua1 = []
     continuua2 = []
-    file = open(os.fspath("/Users/LevineMa/Desktop/LAB/Results Expression Morph/" + filename), 'r')
+    file = open(os.fspath(PATH + filename), 'r')
     for line in file:
         splitLine = line.split(",")
         try:
@@ -694,24 +695,28 @@ def singleAnalysis(resultsNumber, graphName):               #NEED TO MAKE THIS L
     #Runs all the code needed for the single analysis
     parser(resultsNumber)
 
-    analysis(analyses_happy_surpr, zero_anger_fear, two_anger_fear, three_anger_fear, four_anger_fear, five_anger_fear, six_anger_fear, seven_anger_fear, eight_anger_fear, ten_anger_fear)
+
+    analysis(analyses_happy_surpr, zero_happy_surpr, two_happy_surpr, three_happy_surpr, four_happy_surpr, five_happy_surpr, six_happy_surpr, seven_happy_surpr, eight_happy_surpr, ten_happy_surpr)
     getPercentageIndividual(analyses_happy_surpr)
-    makeGraph(graphName)
+    makeGraph(graphName + " Happy Surprise")
     reset()
 
+    parser(resultsNumber)
     analysis(analyses_anger_sad, zero_anger_sad, two_anger_sad, three_anger_sad, four_anger_sad, five_anger_sad, six_anger_sad, seven_anger_sad, eight_anger_sad, ten_anger_sad)
     getPercentageIndividual(analyses_anger_sad)
-    makeGraph(graphName)
+    makeGraph(graphName + " Anger Sad")
     reset()
 
+    parser(resultsNumber)
     analysis(analyses_anger_fear, zero_anger_fear, two_anger_fear, three_anger_fear, four_anger_fear, five_anger_fear, six_anger_fear, seven_anger_fear, eight_anger_fear, ten_anger_fear)
     getPercentageIndividual(analyses_anger_fear)
-    makeGraph(graphName)
+    makeGraph(graphName + " Anger Fear")
     reset()
 
+    parser(resultsNumber)
     analysis(analyses_disgust_surprise, zero_disgust_surprise, two_disgust_surprise, three_disgust_surprise, four_disgust_surprise, five_disgust_surprise, six_disgust_surprise, seven_disgust_surprise, eight_disgust_surprise, ten_disgust_surprise)
     getPercentageIndividual(analyses_disgust_surprise)
-    makeGraph(graphName)
+    makeGraph(graphName + " Disgust Surprise")
     reset()
 
 def getPercentageIndividual(list):
