@@ -1,7 +1,7 @@
 import os
 import ExpressionFunctions as ef
 
-ef.PATH = input("What is the path to your files?")
+ef.PATH = input("What is the path to your files? i.e: /Users/LevineMa/Desktop/LAB/Results Expression Morph/")
 
 
 for file in os.listdir(ef.PATH):
