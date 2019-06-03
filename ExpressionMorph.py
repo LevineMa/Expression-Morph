@@ -1,7 +1,7 @@
 import os
 import ExpressionFunctions as ef
 
-
+ef.PATH = input("What is the path to your files?")
 
 
 for file in os.listdir(ef.PATH):
@@ -27,7 +27,7 @@ ef.getPercentage(ef.analyses_anger_fear)
 ef.makeGraph("Group Analysis Anger Fear")
 ef.reset()
 
-"""ef.itemAnalysisMapMaker(ef.resultsList[0])
+ef.itemAnalysisMapMaker(ef.resultsList[0])
 for file in ef.resultsList:
     if file != ef.resultsList[0]:
         ef.itemAnalysisMapPopulator(file)
@@ -38,7 +38,7 @@ ef.groupItemAnalysisGraph()
 
 for file in ef.resultsList:
     ef.itemAnalysisMapMaker(file)
-    ef.individualItemAnalysisGraph(file)"""
+    ef.individualItemAnalysisGraph(file)
 
 for file in ef.resultsList:
     read = open(ef.PATH + file, 'r')

@@ -3,7 +3,8 @@ import numpy as np
 import os
 
 
-PATH = "/Users/LevineMa/Desktop/LAB/Results Expression Morph/"
+#PATH = "/Users/LevineMa/Desktop/LAB/Results Expression Morph/"
+PATH = ""
 resultsList = []
 
 x = []      #Stores the values for the x axis of the graph (Intervals)
